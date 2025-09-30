@@ -3,15 +3,27 @@ package produtos_organicos;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import produtos_organicos.model.ProdutoOrganico;
 import produtos_organicos.util.Cores;
+
+
 
 public class Menu {
 	
 	private static final Scanner leia = new Scanner(System.in);
+	
+	public static void testarVisualizar() {
+	    ProdutoOrganico p1 = new ProdutoOrganico(1, "Abacate", 1, 9.5f, "Fruta");
+	    p1.visualizar();
+	}
+
 
 	public static void main(String[] args) {
 	
+		testarVisualizar();
+		
 		int opcao;
+		
 		
 while (true) {
 			
@@ -21,7 +33,7 @@ while (true) {
 			System.out.println("--------- A sua loja de produtos orgânicos ---------");
 			System.out.println("****************************************************");
 			System.out.println(Cores.TEXT_RESET);
-			System.out.println("1 - Criar Produto       				    ");
+			System.out.println("1 - Cadastrar Produto       				    ");
 			System.out.println("2 - Listar todos os Produtos 				");
 			System.out.println("3 - Buscar Produto por ID 	 				");
 			System.out.println("4 - Atualizar dados do Produto				");
@@ -52,7 +64,7 @@ while (true) {
 			switch(opcao) {
 			
 			case 1:				
-				System.out.println(Cores.TEXT_RESET + Cores.TEXT_GREEN + "--- Criar Produto ---\n\n");
+				System.out.println(Cores.TEXT_RESET + Cores.TEXT_GREEN + "--- Cadastrar Produto ---\n\n");
 				
 				keyPress();			
 				break;
