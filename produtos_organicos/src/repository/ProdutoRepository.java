@@ -10,5 +10,7 @@ public interface ProdutoRepository {
 	public void buscarPorId(int numero);
 	public void atualizar(Produto produto);
 	public void deletar(int numero);
+	public void aplicarDesconto(int numero);
+	
 	
 }

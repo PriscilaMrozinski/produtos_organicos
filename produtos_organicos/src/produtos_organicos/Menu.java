@@ -43,6 +43,7 @@ while (true) {
 			System.out.println("3 - Buscar Produto por ID 	 				");
 			System.out.println("4 - Atualizar dados do Produto				");
 			System.out.println("5 - Apagar Produto             				");
+			System.out.println("6 - Aplicar Desconto            			");
 			System.out.println("0 - Sair						  			");
 			System.out.println(Cores.TEXT_GREEN + Cores.ANSI_CYAN_BACKGROUND_BRIGHT
 			        + "****************************************************");
@@ -93,7 +94,11 @@ while (true) {
 				deletar();
 				keyPress();		
 				break;
-			
+			case 6:
+			    System.out.println(Cores.TEXT_RESET + Cores.TEXT_GREEN + "--- Aplicar desconto ---\n\n");        
+			    aplicarDesconto();
+			    keyPress();        
+			    break;	
 			case 0: 
 				System.out.println(Cores.TEXT_RESET + Cores.TEXT_GREEN + "--- Menu encerrado ---");
 				keyPress();		
@@ -222,6 +227,29 @@ while (true) {
 				System.out.printf("\nO produto número %d não foi encontrado!", id);
 			}
 		}
+		
+		// Se quiser dar desconto
+		private static void aplicarDesconto() {
+		    System.out.print("Digite o ID do produto: ");
+		    int id = leia.nextInt();
+		    leia.nextLine();
+
+		    Produto produto = produtoController.buscarNaCollection(id);
+
+		    if (produto != null) {
+		        System.out.print("Digite o percentual de desconto: ");
+		        float desconto = leia.nextFloat();
+		        leia.nextLine();
+
+		        float novoPreco = produto.getPreco() - (produto.getPreco() * desconto / 100);
+		        produto.setPreco(novoPreco);
+
+		        System.out.printf("\nDesconto aplicado! Novo preço do produto %s: R$ %.2f\n", produto.getNome(), produto.getPreco());
+		    } else {
+		        System.out.printf("\nO produto número %d não foi encontrado!\n", id);
+		    }
+		}
+
 		
 	
 

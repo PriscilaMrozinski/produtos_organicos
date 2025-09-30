@@ -75,6 +75,24 @@ public class ProdutoController implements ProdutoRepository {
 			}
 			return null;//esse bloco é um exemplo de Optional
 		}
+
+		@Override
+		public void aplicarDesconto(int numero) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		public boolean aplicarDesconto(int id, float percentual) {
+		    Produto produto = buscarNaCollection(id);
+
+		    if (produto != null) {
+		        float novoPreco = produto.getPreco() - (produto.getPreco() * percentual / 100);
+		        produto.setPreco(novoPreco);
+		        return true; // aqui é para aplicar o desconto
+		    }
+		    return false; // tem que colocar, para caso não encontre o id
+		}
+
 	
 
 }
